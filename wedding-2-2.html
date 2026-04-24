@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Haroon & Hamna — Wedding</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #f5ecd7;
+      --parchment: #ede0c4;
+      --forest: #3a5240;
+      --forest-light: #4e6b55;
+      --forest-dark: #263830;
+      --gold: #b8985a;
+      --gold-light: #d4b97a;
+      --text-dark: #2a2a1e;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--cream);
+      color: var(--text-dark);
+      font-family: 'EB Garamond', serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 9999; opacity: .5;
+    }
+
+    /* ── NAV ── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(245,236,215,.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(184,152,90,.25);
+    }
+
+    .nav-monogram {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.6rem;
+      color: var(--forest);
+    }
+
+    nav a {
+      font-family: 'Cinzel', serif;
+      font-size: .72rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--forest);
+      text-decoration: none;
+      margin-left: 36px;
+      transition: color .25s;
+    }
+    nav a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      background: var(--cream);
+      overflow: hidden;
+    }
+
+    /* Decorative diagonal lines like page 1 */
+    .hero::before, .hero::after {
+      content: '';
+      position: absolute;
+      pointer-events: none;
+    }
+    .hero::before {
+      width: 280px; height: 280px;
+      border: 1px solid rgba(184,152,90,.18);
+      border-radius: 50%;
+      top: -60px; left: -80px;
+      transform: rotate(-20deg);
+    }
+    .hero::after {
+      width: 220px; height: 220px;
+      border: 1px solid rgba(184,152,90,.15);
+      border-radius: 50%;
+      bottom: 60px; right: -60px;
+      transform: rotate(15deg);
+    }
+
+    .hero-line {
+      position: absolute;
+      background: rgba(184,152,90,.12);
+      pointer-events: none;
+    }
+    .hero-line-1 {
+      width: 1px; height: 300px;
+      top: 60px; left: 15%;
+      transform: rotate(30deg);
+    }
+    .hero-line-2 {
+      width: 1px; height: 260px;
+      top: 80px; right: 14%;
+      transform: rotate(-25deg);
+    }
+    .hero-line-3 {
+      width: 1px; height: 200px;
+      bottom: 80px; left: 10%;
+      transform: rotate(15deg);
+    }
+    .hero-line-4 {
+      width: 1px; height: 220px;
+      bottom: 100px; right: 9%;
+      transform: rotate(-20deg);
+    }
+
+    .hero-date {
+      font-family: 'Cinzel', serif;
+      font-size: .72rem;
+      letter-spacing: .35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 36px;
+      animation: fadeUp .8s ease both;
+    }
+
+    .hero-names {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--forest-dark);
+      animation: fadeUp .9s .1s ease both;
+    }
+    .hero-names .name {
+      display: block;
+      font-size: clamp(4rem, 12vw, 8rem);
+    }
+    .hero-names .ampersand {
+      display: block;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      color: var(--gold);
+      margin: 8px 0;
+    }
+
+    .hero-divider {
+      display: flex; align-items: center; gap: 16px;
+      margin: 36px auto;
+      width: min(320px, 80%);
+      animation: fadeUp .9s .25s ease both;
+    }
+    .hero-divider-line { flex: 1; height: 1px; background: var(--gold); opacity: .5; }
+
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      color: var(--forest-light);
+      max-width: 480px;
+      line-height: 1.65;
+      animation: fadeUp .9s .3s ease both;
+    }
+
+    .hero-buttons {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 44px;
+      animation: fadeUp .9s .4s ease both;
+    }
+
+    .btn-primary {
+      font-family: 'Cinzel', serif;
+      font-size: .68rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      background: var(--forest);
+      color: var(--cream);
+      border: none; cursor: pointer;
+      text-decoration: none;
+      transition: background .25s, transform .2s;
+    }
+    .btn-primary:hover { background: var(--forest-dark); transform: translateY(-2px); }
+
+    .btn-outline {
+      font-family: 'Cinzel', serif;
+      font-size: .68rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      padding: 13px 32px;
+      background: transparent;
+      color: var(--forest);
+      border: 1px solid rgba(58,82,64,.4);
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color .25s, color .25s, transform .2s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+    /* ── QUOTE BAND ── */
+    .quote-band {
+      background: var(--forest-dark);
+      padding: 60px 24px;
+      text-align: center;
+    }
+
+    .quote-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      color: var(--cream);
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .quote-attr {
+      font-family: 'Cinzel', serif;
+      font-size: .65rem;
+      letter-spacing: .28em;
+      color: var(--gold-light);
+      margin-top: 18px;
+      text-transform: uppercase;
+    }
+
+    /* ── SCHEDULE ── */
+    .schedule-section {
+      padding: 100px 24px 120px;
+      background: var(--cream);
+      position: relative;
+    }
+
+    .schedule-section::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(184,152,90,.35), transparent);
+    }
+
+    .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: .72rem;
+      letter-spacing: .35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      color: var(--forest-dark);
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .timeline {
+      max-width: 660px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+
+    /* Vertical line */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: calc(50% - 0.5px);
+      top: 24px;
+      bottom: 24px;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--gold) 8%, var(--gold) 92%, transparent);
+      opacity: .35;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 1fr 40px 1fr;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 28px;
+    }
+
+    /* alternate: odd items have card left, even items card right */
+    .timeline-item:nth-child(odd) .tl-card { grid-column: 1; text-align: right; padding-right: 32px; }
+    .timeline-item:nth-child(odd) .tl-dot  { grid-column: 2; }
+    .timeline-item:nth-child(odd) .tl-spacer { grid-column: 3; }
+
+    .timeline-item:nth-child(even) .tl-spacer { grid-column: 1; }
+    .timeline-item:nth-child(even) .tl-dot   { grid-column: 2; }
+    .timeline-item:nth-child(even) .tl-card  { grid-column: 3; text-align: left; padding-left: 32px; }
+
+    .tl-card {
+      background: var(--parchment);
+      border: 1px solid rgba(184,152,90,.28);
+      padding: 24px 26px 26px;
+      position: relative;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .tl-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(38,56,48,.12);
+    }
+
+    .tl-dot {
+      display: flex; align-items: center; justify-content: center;
+      z-index: 1;
+    }
+    .tl-dot-inner {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 4px rgba(184,152,90,.18);
+    }
+
+    .tl-spacer { /* empty */ }
+
+    .tl-time {
+      font-family: 'Cinzel', serif;
+      font-size: .62rem;
+      letter-spacing: .2em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .tl-event-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: var(--forest-dark);
+      margin-bottom: 6px;
+    }
+
+    .tl-event-desc {
+      font-family: 'EB Garamond', serif;
+      font-size: .95rem;
+      color: var(--forest-light);
+      line-height: 1.55;
+    }
+
+    /* ── MID FOOTER (between schedule & memories) ── */
+    .mid-footer {
+      background: var(--forest-dark);
+      padding: 80px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mid-footer::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .mid-footer-ornament {
+      display: flex; align-items: center; gap: 20px;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+    .mid-footer-ornament-line {
+      width: 80px; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(184,152,90,.5));
+    }
+    .mid-footer-ornament-line:last-child {
+      background: linear-gradient(270deg, transparent, rgba(184,152,90,.5));
+    }
+    .mid-footer-ornament-gem {
+      font-size: 1rem;
+      color: var(--gold);
+      letter-spacing: .15em;
+    }
+
+    .mid-footer-names {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      color: var(--cream);
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+
+    .mid-footer-location {
+      font-family: 'Cinzel', serif;
+      font-size: .68rem;
+      letter-spacing: .35em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    .mid-footer-cta {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: .7rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--cream);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(184,152,90,.55);
+      padding-bottom: 3px;
+      transition: color .2s, border-color .2s;
+    }
+    .mid-footer-cta:hover { color: var(--gold-light); border-color: var(--gold-light); }
+
+    /* ── MEMORIES HERO ── */
+    .memories-hero {
+      background: var(--cream);
+      padding: 110px 24px 90px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .memories-hero::before, .memories-hero::after {
+      content: '';
+      position: absolute;
+      pointer-events: none;
+    }
+    /* subtle grain overlay */
+    .memories-hero::before {
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    }
+
+    .memories-hero-date {
+      font-family: 'Cinzel', serif;
+      font-size: .7rem;
+      letter-spacing: .38em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .memories-hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(3.2rem, 10vw, 7rem);
+      color: var(--forest-dark);
+      line-height: 1.05;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .memories-hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2.2vw, 1.3rem);
+      color: var(--forest-light);
+      max-width: 500px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+      position: relative;
+    }
+
+    .memories-hero-divider {
+      display: flex; align-items: center; gap: 18px;
+      justify-content: center;
+      position: relative;
+    }
+    .memories-hero-divider-line {
+      width: 90px; height: 1px;
+      background: rgba(184,152,90,.55);
+    }
+
+    /* ── MEMORIES ── */
+    .memories-section {
+      padding: 100px 24px 120px;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 100%, rgba(74,107,85,.07) 0%, transparent 70%),
+        var(--cream);
+    }
+
+    .folders-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* 5th card sits alone — center it in a 3-col grid */
+    .folder-card:nth-child(4) { grid-column: 1; }
+    .folder-card:nth-child(5) { grid-column: 3; }
+
+    /* For 2-card bottom row centering trick */
+    .folders-grid::after {
+      content: '';
+      /* phantom cell to keep last row balanced when needed */
+    }
+
+    .folder-card {
+      background: var(--parchment);
+      border: 1px solid rgba(184,152,90,.3);
+      text-decoration: none;
+      color: inherit;
+      display: flex; flex-direction: column;
+      transition: transform .3s, box-shadow .3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .folder-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(38,56,48,.15);
+    }
+
+    .folder-card::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(184,152,90,.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .folder-thumb {
+      height: 180px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .folder-card:nth-child(1) .folder-thumb { background: linear-gradient(135deg, #3a5240 0%, #4e6b55 100%); }
+    .folder-card:nth-child(2) .folder-thumb { background: linear-gradient(135deg, #5c4a2a 0%, #7a6340 100%); }
+    .folder-card:nth-child(3) .folder-thumb { background: linear-gradient(135deg, #2a3a38 0%, #3a5240 100%); }
+    .folder-card:nth-child(4) .folder-thumb { background: linear-gradient(135deg, #4a3828 0%, #6e5238 100%); }
+    .folder-card:nth-child(5) .folder-thumb { background: linear-gradient(135deg, #3a3a28 0%, #4a5240 100%); }
+
+    .folder-thumb-overlay {
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,.03) 0px,
+        rgba(255,255,255,.03) 1px,
+        transparent 1px,
+        transparent 8px
+      );
+    }
+
+    .folder-thumb-icon { font-size: 3rem; opacity: .8; position: relative; z-index: 1; }
+
+    .folder-thumb-label {
+      position: absolute; bottom: 12px; right: 14px;
+      font-family: 'Cinzel', serif;
+      font-size: .6rem;
+      letter-spacing: .2em;
+      color: rgba(245,236,215,.55);
+      text-transform: uppercase;
+      z-index: 1;
+    }
+
+    .folder-body {
+      padding: 26px 26px 30px;
+      flex: 1;
+      display: flex; flex-direction: column;
+    }
+
+    .folder-tag {
+      font-family: 'Cinzel', serif;
+      font-size: .62rem;
+      letter-spacing: .22em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .folder-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600;
+      font-size: 1.4rem;
+      color: var(--forest-dark);
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .folder-desc {
+      font-family: 'EB Garamond', serif;
+      font-size: .97rem;
+      color: var(--forest-light);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .folder-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(184,152,90,.25);
+    }
+
+    .folder-count {
+      font-family: 'Cinzel', serif;
+      font-size: .65rem;
+      letter-spacing: .15em;
+      color: var(--forest-light);
+      text-transform: uppercase;
+    }
+
+    .folder-arrow {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--forest);
+      color: var(--cream);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .9rem;
+      transition: background .25s, transform .25s;
+    }
+    .folder-card:hover .folder-arrow { background: var(--gold); transform: translateX(3px); }
+
+    /* ── NOTE BAND ── */
+    .note-band {
+      background: var(--forest-dark);
+      padding: 72px 24px;
+      text-align: center;
+    }
+    .note-icon { font-size: 2.2rem; margin-bottom: 16px; }
+    .note-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.2rem, 2.8vw, 1.7rem);
+      color: var(--cream);
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+    .note-sub {
+      font-family: 'Cinzel', serif;
+      font-size: .68rem;
+      letter-spacing: .25em;
+      color: var(--gold-light);
+      margin-top: 22px;
+      text-transform: uppercase;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--forest-dark);
+      border-top: 1px solid rgba(184,152,90,.2);
+      color: var(--parchment);
+      text-align: center;
+      padding: 48px 24px;
+    }
+    .footer-names {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.8rem;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+    .footer-note {
+      font-family: 'Cinzel', serif;
+      font-size: .65rem;
+      letter-spacing: .25em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+    }
+    .footer-link {
+      display: inline-block;
+      margin-top: 24px;
+      font-family: 'Cinzel', serif;
+      font-size: .72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--cream);
+      text-decoration: none;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 2px;
+      transition: color .2s;
+    }
+    .footer-link:hover { color: var(--gold-light); }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    .timeline-item:nth-child(1) { transition-delay: .05s; }
+    .timeline-item:nth-child(2) { transition-delay: .15s; }
+    .timeline-item:nth-child(3) { transition-delay: .25s; }
+    .timeline-item:nth-child(4) { transition-delay: .35s; }
+
+    .folders-grid .folder-card:nth-child(1) { transition-delay: .05s; }
+    .folders-grid .folder-card:nth-child(2) { transition-delay: .12s; }
+    .folders-grid .folder-card:nth-child(3) { transition-delay: .19s; }
+    .folders-grid .folder-card:nth-child(4) { transition-delay: .26s; }
+    .folders-grid .folder-card:nth-child(5) { transition-delay: .33s; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .folders-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .folder-card:nth-child(4) { grid-column: auto; }
+      .folder-card:nth-child(5) { grid-column: auto; }
+    }
+
+    @media (max-width: 640px) {
+      header { padding: 14px 20px; }
+      nav a { margin-left: 18px; }
+
+      .timeline::before { left: 20px; }
+      .timeline-item {
+        grid-template-columns: 40px 1fr;
+      }
+      .timeline-item:nth-child(odd) .tl-card,
+      .timeline-item:nth-child(even) .tl-card {
+        grid-column: 2;
+        text-align: left;
+        padding-left: 24px;
+        padding-right: 0;
+      }
+      .timeline-item:nth-child(odd) .tl-dot,
+      .timeline-item:nth-child(even) .tl-dot {
+        grid-column: 1;
+        grid-row: 1;
+      }
+      .timeline-item:nth-child(odd) .tl-spacer,
+      .timeline-item:nth-child(even) .tl-spacer { display: none; }
+
+      .folders-grid { grid-template-columns: 1fr; }
+      .folder-card:nth-child(4),
+      .folder-card:nth-child(5) { grid-column: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header>
+    <span class="nav-monogram">H &amp; H</span>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#memories">Memories</a>
+    </nav>
+  </header>
+
+  <!-- ══ HERO ══ -->
+  <section class="hero" id="home">
+    <div class="hero-line hero-line-1"></div>
+    <div class="hero-line hero-line-2"></div>
+    <div class="hero-line hero-line-3"></div>
+    <div class="hero-line hero-line-4"></div>
+
+    <p class="hero-date">Friday · 3rd April 2025 · Lahore, Pakistan</p>
+
+    <div class="hero-names">
+      <span class="name">Haroon</span>
+      <span class="ampersand">&amp;</span>
+      <span class="name">Hamna</span>
+    </div>
+
+    <div class="hero-divider">
+      <span class="hero-divider-line"></span>
+      <span style="color:var(--gold);font-size:.9rem;">✦</span>
+      <span class="hero-divider-line"></span>
+    </div>
+
+    <p class="hero-tagline">A celebration of love, family &amp; a lifetime together</p>
+
+    <div class="hero-buttons">
+      <a href="#schedule" class="btn-primary">Wedding Details</a>
+      <a href="#memories" class="btn-outline">View Memories</a>
+    </div>
+  </section>
+
+  <!-- ══ QUOTE BAND ══ -->
+  <div class="quote-band">
+    <p class="quote-text">"And We created you in pairs."</p>
+    <p class="quote-attr">— Surah An-Naba, 78:8</p>
+  </div>
+
+  <!-- ══ SCHEDULE ══ -->
+  <section class="schedule-section" id="schedule">
+    <p class="section-label reveal">Day Of</p>
+    <h2 class="section-title reveal">Wedding Schedule</h2>
+
+    <div class="timeline">
+
+      <!-- 1 – Mayoon -->
+      <div class="timeline-item reveal">
+        <div class="tl-card">
+          <p class="tl-time">1st April 2025</p>
+          <p class="tl-event-name">Mayoon </p>
+          <p class="tl-event-desc">Blessings, Ubtan Ceremony &amp; the joyful beginning of the celebrations with family.</p>
+        </div>
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-spacer"></div>
+      </div>
+
+      <!-- 2 – Mehandi -->
+      <div class="timeline-item reveal">
+        <div class="tl-spacer"></div>
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card">
+          <p class="tl-time">2nd April 2025</p>
+          <p class="tl-event-name">Mehandi </p>
+          <p class="tl-event-desc">Vibrant colours, music &amp; the beautiful art of henna — a night full of joy and laughter.</p>
+        </div>
+      </div>
+
+      <!-- 3 – Barat -->
+      <div class="timeline-item reveal">
+        <div class="tl-card">
+          <p class="tl-time">3rd April 2025</p>
+          <p class="tl-event-name">Barat </p>
+          <p class="tl-event-desc">The sacred marriage contract, procession &amp; all the precious moments of the big day.</p>
+        </div>
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-spacer"></div>
+      </div>
+
+      <!-- 4 – Walima -->
+      <div class="timeline-item reveal">
+        <div class="tl-spacer"></div>
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-card">
+          <p class="tl-time">4th April 2025</p>
+          <p class="tl-event-name">Walima </p>
+          <p class="tl-event-desc">Evening celebration, dinner &amp; blessings — a grand send-off filled with warmth and love.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ MID FOOTER ══ -->
+  <div class="mid-footer">
+    <div class="mid-footer-ornament">
+      <span class="mid-footer-ornament-line"></span>
+      <span class="mid-footer-ornament-gem">✦ ✦ ✦</span>
+      <span class="mid-footer-ornament-line"></span>
+    </div>
+    <p class="mid-footer-names">Haroon &amp; Hamna</p>
+    <p class="mid-footer-location">April 2025 &nbsp;·&nbsp; Lahore, Pakistan</p>
+    <a href="#memories" class="mid-footer-cta">View Our Wedding Memories →</a>
+  </div>
+
+  <!-- ══ MEMORIES HERO ══ -->
+  <div class="memories-hero" id="memories">
+    <p class="memories-hero-date">April 2025</p>
+    <h2 class="memories-hero-title">Our Memories</h2>
+    <p class="memories-hero-tagline">Every smile, every tear of joy, every blessed moment — preserved here for family, forever.</p>
+    <div class="memories-hero-divider">
+      <span class="memories-hero-divider-line"></span>
+      <span style="color:var(--gold);font-size:.85rem;">✦</span>
+      <span class="memories-hero-divider-line"></span>
+    </div>
+  </div>
+
+  <!-- ══ MEMORIES ══ -->
+  <section class="memories-section" style="padding-top:60px;">
+    <p class="section-label reveal">Browse by Event</p>
+    <h2 class="section-title reveal">Photo &amp; Video Albums</h2>
+
+    <div class="folders-grid">
+
+      <!-- 1 – Mayoon -->
+      <a class="folder-card reveal" href="https://photos.app.goo.gl/aXfgRwN4Pczoy4Q48" target="_blank" rel="noopener">
+        <div class="folder-thumb">
+          <div class="folder-thumb-overlay"></div>
+          <span class="folder-thumb-icon">🌼</span>
+          <span class="folder-thumb-label">Album 01</span>
+        </div>
+        <div class="folder-body">
+          <p class="folder-tag">1st April 2025</p>
+          <p class="folder-name">Mayoon</p>
+          <p class="folder-desc">Golden rituals, turmeric glows &amp; the warmth of family gathered to begin the celebrations.</p>
+          <div class="folder-footer">
+            <span class="folder-count">Photos &amp; Videos</span>
+            <span class="folder-arrow">→</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 2 – Mehandi -->
+      <a class="folder-card reveal" href="https://photos.app.goo.gl/zL9EbaGX2LpJBL826" target="_blank" rel="noopener">
+        <div class="folder-thumb">
+          <div class="folder-thumb-overlay"></div>
+          <span class="folder-thumb-icon">🌻</span>
+          <span class="folder-thumb-label">Album 02</span>
+        </div>
+        <div class="folder-body">
+          <p class="folder-tag">2nd April 2025</p>
+          <p class="folder-name">Mehandi Night</p>
+          <p class="folder-desc">Vibrant henna, dancing &amp; laughter — the most colourful night of the wedding celebrations.</p>
+          <div class="folder-footer">
+            <span class="folder-count">Photos &amp; Videos</span>
+            <span class="folder-arrow">→</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 3 – Barat -->
+      <a class="folder-card reveal" href="https://photos.app.goo.gl/YeK8gQhJuVvreLpX9" target="_blank" rel="noopener">
+        <div class="folder-thumb">
+          <div class="folder-thumb-overlay"></div>
+          <span class="folder-thumb-icon">🌹</span>
+          <span class="folder-thumb-label">Album 03</span>
+        </div>
+        <div class="folder-body">
+          <p class="folder-tag">3rd April 2025</p>
+          <p class="folder-name">Barat Day</p>
+          <p class="folder-desc">The sacred Nikah, the procession &amp; every precious moment of the most awaited day.</p>
+          <div class="folder-footer">
+            <span class="folder-count">Photos &amp; Videos</span>
+            <span class="folder-arrow">→</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 4 – Barat Shoot -->
+      <a class="folder-card reveal" href="https://photos.app.goo.gl/2g218MdV491wYa9d9" target="_blank" rel="noopener">
+        <div class="folder-thumb">
+          <div class="folder-thumb-overlay"></div>
+          <span class="folder-thumb-icon">🌹</span>
+          <span class="folder-thumb-label">Album 04</span>
+        </div>
+        <div class="folder-body">
+          <p class="folder-tag">4th April 2025</p>
+          <p class="folder-name">Walima</p>
+          <p class="folder-desc">The sacred Nikah, the procession &amp; every precious moment of the most awaited day.</p>
+          <div class="folder-footer">
+            <span class="folder-count">Photos &amp; Videos</span>
+            <span class="folder-arrow">→</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- 5 – Walima -->
+      <a class="folder-card reveal" href="https://photos.app.goo.gl/es8Ly16dxkxRXnhE7" target="_blank" rel="noopener">
+        <div class="folder-thumb">
+          <div class="folder-thumb-overlay"></div>
+          <span class="folder-thumb-icon">🌸</span>
+          <span class="folder-thumb-label">Album 05</span>
+        </div>
+        <div class="folder-body">
+          <p class="folder-tag">Special Collection</p>
+          <p class="folder-name">Behind the Scenes</p>
+          <p class="folder-desc">The grand banquet — dinner, blessings &amp; heartfelt moments of celebration with loved ones.</p>
+          <div class="folder-footer">
+            <span class="folder-count">Photos &amp; Videos</span>
+            <span class="folder-arrow">→</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- NOTE BAND -->
+  <div class="note-band">
+    <div class="note-icon">💚</div>
+    <p class="note-text">
+      "These memories belong to all of us. Share them, cherish them, and carry them in your hearts always."
+    </p>
+    <p class="note-sub">With love — Haroon &amp; Hamna</p>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-names">Haroon &amp; Hamna</p>
+    <p class="footer-note">April 2025 · Lahore, Pakistan</p>
+    <a href="#memories" class="footer-link">View Our Wedding Memories →</a>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
